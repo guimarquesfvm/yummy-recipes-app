@@ -2,7 +2,7 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { SeachInputWithIcon } from './SearchInput'
-import { ProfileIcon } from './ProfileIcon';
+import { ProfileIcon } from '../assets/icons/ProfileIcon';
 
 
 const TagHeader = styled.header`

@@ -1,4 +1,5 @@
-import { SearchIcon } from "./SeachIcon";
+"use client";
+import { SearchIcon } from "../assets/icons/SeachIcon";
 
 const { styled } = require("styled-components");
 
@@ -8,7 +9,7 @@ export const SearchInput = styled.input`
     padding: 16px 10px;
     border: none;
 
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 
     font-family: inherit;
     font-weight: 400;

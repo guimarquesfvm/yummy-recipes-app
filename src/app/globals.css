@@ -1,9 +1,10 @@
 :root {
   --border-radius: 12px;
-  --logo-color: black;
+  --logo-color: #41197F;
   --bg-primary: white;
-  --bg-secondary: F3F5F6;
-  --text-dark: grey;
+  --bg-secondary: #FCDC36;
+  --text-dark: #41197F;
+  --selected-filter: #41197F;
 }
 
 * {

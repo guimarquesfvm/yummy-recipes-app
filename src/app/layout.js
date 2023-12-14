@@ -1,6 +1,7 @@
 import { Epilogue } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header';
+import { MealsProvider } from '@/context/MealsContext';
 
 const epilogue = Epilogue({
   weight: ['400', '500', '600', '700'],
@@ -16,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={epilogue.className}>
-        <Header />
-        {children}
+        <MealsProvider>
+          <Header />
+          {children}
+        </MealsProvider>
       </body>
     </html>
   )
