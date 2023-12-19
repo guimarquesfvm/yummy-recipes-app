@@ -12,6 +12,7 @@ const ListContainer = styled.div`
     gap: 20px;
     width: 100%;
     max-width: 1500px;
+    justify-items: center;
 `;
 
 function RecipesList() {

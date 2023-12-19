@@ -4,7 +4,7 @@ import { SearchIcon } from "../assets/icons/SeachIcon";
 const { styled } = require("styled-components");
 
 export const SearchInput = styled.input`
-    width: 352px;
+    width: 100%;
     border-radius: 8px;
     padding: 16px 10px;
     border: none;
@@ -13,15 +13,20 @@ export const SearchInput = styled.input`
 
     font-family: inherit;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 20px;
     color: var(--text-dark);
     cursor: text;
+
+    @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+        font-size: 14px;
+        line-height: 22px;
+    }
 `
 
 const InputContainer = styled.div`
     position: relative;
-    width: 352px;
+    width: 250px;
 
     svg {
         position: absolute;
@@ -29,6 +34,10 @@ const InputContainer = styled.div`
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+    }
+
+    @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+        width: 352px
     }
 `
 

@@ -15,12 +15,16 @@ import { GoatIcon } from '@/assets/icons/filter-icons/GoatIcon';
 const FilterListStyled = styled.ul`
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
   align-items: center;
   gap: 10px;
   list-style: none;
   width: 100%;
   max-width: 700px;
+
+  @media (min-width: ${props => props.theme.desktopFiltersBreakpoint}) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 `
 
 const FilterItemStyled = styled.li`

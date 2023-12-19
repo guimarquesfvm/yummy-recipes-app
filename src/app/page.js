@@ -1,17 +1,18 @@
 "use client";
 import FilterBar from '@/components/FilterBar';
-import styles from './page.module.css'
 import RecipesList from '@/components/RecipesList';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import styled from 'styled-components';
 
+const PageWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 export default function Home() {
-  const client = new QueryClient();
   return (
-    <main className={styles.main}>
-      <QueryClientProvider client={ client }>
+    <PageWrapper>
         <FilterBar />
         <RecipesList />
-      </QueryClientProvider>
-    </main>
+    </PageWrapper>
   )
 }
