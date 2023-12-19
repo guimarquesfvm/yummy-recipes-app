@@ -13,17 +13,23 @@ import { GoatIcon } from '@/assets/icons/filter-icons/GoatIcon';
 
 
 const FilterListStyled = styled.ul`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    list-style: none;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  width: 100%;
+  max-width: 700px;
 `
 
 const FilterItemStyled = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
   cursor: pointer;
     border-bottom: ${({ selected }) => selected ? '4px solid var(--selected-filter)' : 'none'};
-
   > svg {
     width: 100px;
     height: 100px;
