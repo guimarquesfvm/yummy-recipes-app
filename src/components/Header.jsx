@@ -3,6 +3,7 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { SeachInputWithIcon } from './SearchInput'
 import { ProfileIcon } from '../assets/icons/ProfileIcon';
+import { useFilter } from '@/hooks/useFilter';
 
 
 const TagHeader = styled.header`
@@ -32,11 +33,16 @@ const Logo = styled.a`
 `
 
 function Header() {
+    const { searchTerm, setSearchTerm }= useFilter();
+
+    const handleChange = (value) => {
+        setSearchTerm(value);
+    }
   return (
     <TagHeader>
         <Logo>Yummy!</Logo>
         <div>
-            <SeachInputWithIcon />
+            <SeachInputWithIcon handleChange={ handleChange } value={ searchTerm }/>
             <ProfileIcon />
         </div>
     </TagHeader>

@@ -27,7 +27,7 @@ const FilterItemStyled = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-    
+  margin-top: 20px;
   cursor: pointer;
     border-bottom: ${({ selected }) => selected ? '4px solid var(--selected-filter)' : 'none'};
   > svg {
@@ -48,7 +48,7 @@ function FilterByType() {
         <FilterItemStyled selected={filterType === 'All'} onClick={ () => handleChangeType("All")}><AllFoodsIcon /></FilterItemStyled>
         <FilterItemStyled selected={filterType === 'Beef'} onClick={ () => handleChangeType('Beef')}><BeefIcon /></FilterItemStyled>
         <FilterItemStyled selected={filterType === 'Breakfast'} onClick={ () => handleChangeType('Breakfast')}><BreakfastIcon /></FilterItemStyled>
-        <FilterItemStyled selected={filterType === 'Chiken'} onClick={ () => handleChangeType('Chiken')}><ChickenIcon /></FilterItemStyled>
+        <FilterItemStyled selected={filterType === 'Chicken'} onClick={ () => handleChangeType('Chicken')}><ChickenIcon /></FilterItemStyled>
         <FilterItemStyled selected={filterType === 'Dessert'} onClick={ () => handleChangeType('Dessert')}><DessertIcon /></FilterItemStyled>
         <FilterItemStyled selected={filterType === 'Goat'} onClick={ () => handleChangeType('Goat')}><GoatIcon /></FilterItemStyled>
     </FilterListStyled>

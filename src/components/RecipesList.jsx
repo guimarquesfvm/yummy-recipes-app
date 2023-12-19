@@ -1,7 +1,9 @@
+"use client";
 import { useRecipes } from '@/hooks/useRecipes';
 import React from 'react';
 import RecipeCard from './RecipeCard';
 import styled from 'styled-components';
+import { useFilter } from '@/hooks/useFilter';
 
 const ListContainer = styled.div`
     margin-top: 20px;

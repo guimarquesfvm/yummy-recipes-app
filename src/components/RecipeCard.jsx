@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Card = styled.div`
-    display: flex;]
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    background-color: white;
     width: 300px;
     
     border: solid 1px var(--border-grey);

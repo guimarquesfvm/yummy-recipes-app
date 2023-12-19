@@ -9,7 +9,7 @@ export const MealsContext = createContext({
 })
 
 export const MealsProvider = ({children}) => {
-    const [filterType, setFilterType] = useState('');
+    const [filterType, setFilterType] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
 
     return (

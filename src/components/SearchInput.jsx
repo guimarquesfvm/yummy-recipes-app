@@ -32,10 +32,10 @@ const InputContainer = styled.div`
     }
 `
 
-export function SeachInputWithIcon() {
+export function SeachInputWithIcon({ handleChange }) {
     return (
         <InputContainer>
-            <SearchInput placeholder='Qual receita está procurando?'/>
+            <SearchInput placeholder='Qual receita está procurando?' onChange={ (e) => handleChange(e.target.value)} />
             <SearchIcon />
         </InputContainer>
     )
