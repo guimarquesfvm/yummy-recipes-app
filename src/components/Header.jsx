@@ -22,6 +22,11 @@ const TagHeader = styled.header`
 
         > svg {
             cursor: pointer;
+            &:hover {
+                transform: scale(1.15);
+                transition: 0.5s;
+                z-index: 1;
+            }
         }
     }
 

@@ -33,7 +33,15 @@ const FilterItemStyled = styled.li`
   justify-content: center;
   margin-top: 20px;
   cursor: pointer;
-    border-bottom: ${({ selected }) => selected ? '4px solid var(--selected-filter)' : 'none'};
+  border-bottom: ${({ selected }) => selected ? '4px solid var(--selected-filter)' : 'none'};
+
+  &:hover {
+    transform: scale(1.10);
+    transition: 0.5s;
+    z-index: 1;
+    cursor: pointer;
+  }
+
   > svg {
     width: 100px;
     height: 100px;

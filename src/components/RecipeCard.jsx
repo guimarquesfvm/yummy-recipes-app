@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 const Card = styled.div`
     align-items: center;
@@ -7,7 +8,16 @@ const Card = styled.div`
     flex-direction: column;
     background-color: white;
     width: 300px;
-    
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.5s;
+        z-index: 1;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+    }
+
     border: solid 1px var(--border-grey);
     border-radius: 10px;
     text-align: left;
@@ -28,8 +38,13 @@ const Card = styled.div`
 `
 
 function RecipeCard({ recipe }) {
+  const router = useRouter();
+  const handleNavigate = () => {
+    router.push(`/recipe?id=${recipe.idMeal}`);
+  }
+
   return (
-    <Card>
+    <Card onClick={ handleNavigate }>
         <img src={ recipe.strMealThumb }/>
         <h3>{ recipe.strMeal }</h3>
     </Card>
