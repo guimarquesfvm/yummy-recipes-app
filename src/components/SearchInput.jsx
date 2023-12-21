@@ -26,7 +26,7 @@ export const SearchInput = styled.input`
 
 const InputContainer = styled.div`
     position: relative;
-    width: 250px;
+    width: 150px;
 
     svg {
         position: absolute;
@@ -35,7 +35,9 @@ const InputContainer = styled.div`
         transform: translateY(-50%);
         cursor: pointer;
     }
-
+    @media (min-width: 480px) {
+        width: 250px;
+    }
     @media (min-width: ${props => props.theme.desktopBreakpoint}) {
         width: 352px
     }
@@ -44,7 +46,7 @@ const InputContainer = styled.div`
 export function SeachInputWithIcon({ handleChange }) {
     return (
         <InputContainer>
-            <SearchInput placeholder='Qual receita está procurando?' onChange={ (e) => handleChange(e.target.value)} />
+            <SearchInput placeholder='Search' onChange={ (e) => handleChange(e.target.value)} />
             <SearchIcon />
         </InputContainer>
     )

@@ -1,4 +1,5 @@
 "use client";
+import { DefaultPageLayout } from '@/components/DefaultPageLayout';
 import FilterBar from '@/components/FilterBar';
 import RecipesList from '@/components/RecipesList';
 import styled from 'styled-components';
@@ -10,9 +11,11 @@ const PageWrapper = styled.main`
 `
 export default function Home() {
   return (
-    <PageWrapper>
-        <FilterBar />
-        <RecipesList />
-    </PageWrapper>
+    <DefaultPageLayout>
+      <PageWrapper>
+          <FilterBar />
+          <RecipesList />
+      </PageWrapper>
+    </DefaultPageLayout>
   )
 }
