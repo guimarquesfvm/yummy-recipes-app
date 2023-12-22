@@ -2,10 +2,16 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { SeachInputWithIcon } from './SearchInput'
-import { ProfileIcon } from '../assets/icons/ProfileIcon';
+import { FavoritesIcon } from '../assets/icons/FavoritesIcon';
 import { useFilter } from '@/hooks/useFilter';
+import YummyLogo from '@/assets/icons/YummyLogo';
+import { useRouter } from 'next/navigation';
+import { Caveat } from 'next/font/google';
 
-
+const caveat = Caveat({
+    weight: ['400', '500', '600', '700'],
+    subsets: ['latin'],
+  })
 const TagHeader = styled.header`
     display: flex;
     align-items: center;
@@ -22,6 +28,9 @@ const TagHeader = styled.header`
 
         > svg {
             cursor: pointer;
+            width: 32px;
+            height: 32px;
+
             &:hover {
                 transform: scale(1.15);
                 transition: 0.5s;
@@ -37,12 +46,34 @@ const TagHeader = styled.header`
 
 const Logo = styled.a`
     color: var(--logo-color);
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 800;
     line-height: 150%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    > svg {
+        margin-right: 10px;
+        width: 36px;
+        height: 36px;
+    }
+
+    @media (min-width: 480px) {
+        font-size: 42px;
+        > svg {
+            width: 42px;
+            height: 42px;
+        }
+    }
 
     @media (min-width: ${props => props.theme.desktopBreakpoint}) {
-        font-size: 40px;
+        font-size: 48px;
+        > svg {
+            width: 48px;
+            height: 48px;
+        }
     }
 `
 
@@ -52,12 +83,20 @@ function Header() {
     const handleChange = (value) => {
         setSearchTerm(value);
     }
+
+    const router = useRouter();
+    const handleNavigate = () => {
+        router.push('/');
+    }
   return (
     <TagHeader>
-        <Logo>Yummy!</Logo>
+        <Logo className={ caveat.className } onClick={ () => handleNavigate() }>
+            <YummyLogo />
+            yummy
+        </Logo>
         <div>
             <SeachInputWithIcon handleChange={ handleChange } value={ searchTerm }/>
-            <ProfileIcon />
+            <FavoritesIcon />
         </div>
     </TagHeader>
   )

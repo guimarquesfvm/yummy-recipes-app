@@ -35,6 +35,7 @@ const Card = styled.div`
       justify-content: space-between;
       align-items: center;
       margin: 10px;
+
       h3 {
           font-weight: 400;
           font-size: 16px;
@@ -63,7 +64,7 @@ function RecipeCard({ recipe }) {
         <img src={ recipe.strMealThumb } onClick={ handleNavigate } />
         <div>
           <h3>{ recipe.strMeal }</h3>
-          <div onClick={ () => handleFavorite(recipe) }>
+          <div onClick={ () => handleFavorite(recipe) } className='favorite-btn-container'>
             { isFavorited(recipe) ? <FavoriteButtons.FavoriteFilled /> : <FavoriteButtons.FavoriteNotFilled /> }
           </div>
         </div>

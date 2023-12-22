@@ -35,7 +35,8 @@ const InputContainer = styled.div`
         transform: translateY(-50%);
         cursor: pointer;
     }
-    @media (min-width: 480px) {
+    
+    @media (min-width: 580px) {
         width: 250px;
     }
     @media (min-width: ${props => props.theme.desktopBreakpoint}) {

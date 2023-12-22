@@ -44,6 +44,13 @@ const Container = styled.div`
             svg {
               width: 24px;
               height: 24px;
+              cursor: pointer;
+
+              &:hover {
+                transform: scale(1.15);
+                transition: 0.5s;
+                z-index: 1;
+              }
             }
         }
 
