@@ -1,9 +1,11 @@
 "use client";
-import BackButton from '@/components/BackButton';
-import { DefaultPageLayout } from '@/components/DefaultPageLayout';
-import { useRecipe } from '@/hooks/useRecipe';
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import FavoriteButtons from "@/assets/icons/FavoriteButtons";
+import BackButton from "@/components/BackButton";
+import { DefaultPageLayout } from "@/components/DefaultPageLayout";
+import { useRecipe } from "@/hooks/useRecipe";
+import React, { useEffect, useState, useContext } from "react";
+import { MealsContext } from "@/context/MealsContext";
+import styled from "styled-components";
 
 const Container = styled.div`
     display: flex;
@@ -25,14 +27,26 @@ const Container = styled.div`
             max-width: 400px;
             height: auto;
         }
+        .favorite-btn-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
 
-        h1 {
-            margin-top: 20px;
-            font-size: 2rem;
-            font-weight: 700;
-            color: black;
-            line-height: 150%;
+            h1 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: black;
+                line-height: 150%;
+            }
+
+            svg {
+              width: 24px;
+              height: 24px;
+            }
         }
+
 
         h2 {
             margin-top: 20px;
@@ -86,6 +100,13 @@ const Container = styled.div`
               display: flex;
               flex-direction: column;
             }
+
+            .favorite-btn-container {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+            }
           }
         }
       }
@@ -122,11 +143,11 @@ const Container = styled.div`
         }
       }
     }
-`
+`;
 
 function Recipe({ searchParams }) {
   const recipe = useRecipe(searchParams.id);
-  console.log(recipe)
+  const { isFavorited, handleFavorite } = useContext(MealsContext);
 
   const [ingredients, setIngredients] = useState([]);
   const [measurements, setMeasurements] = useState([]);
@@ -136,31 +157,35 @@ function Recipe({ searchParams }) {
   useEffect(() => {
     if (!recipe) return;
     setIngredients(
-      Object.entries(recipe)
-        .filter((e) => e[0].includes('strIngredient')
-          && (e[1] !== null && e[1] !== '')),
+      Object.entries(recipe).filter(
+        (e) => e[0].includes("strIngredient") && e[1] !== null && e[1] !== ""
+      )
     );
     setMeasurements(
-      Object.entries(recipe)
-        .filter((e) => e[0].includes('strMeasure')
-          && (e[1] !== null && e[1] !== '')),
+      Object.entries(recipe).filter(
+        (e) => e[0].includes("strMeasure") && e[1] !== null && e[1] !== ""
+      )
     );
   }, [recipe]);
 
-  useEffect(() => {
-    console.log(ingredients)
-    console.log(measurements)
-  }, [ingredients, measurements]);
-  
   return (
     <DefaultPageLayout>
       <Container>
         <BackButton navigate={"/"} />
         <section>
-          <div className='image-and-ingredients-container'>
+          <div className="image-and-ingredients-container">
             <img src={recipe?.strMealThumb} alt={`${recipe?.strMeal} photo`} />
             <div>
-              <h1>{recipe?.strMeal}</h1>
+              <div className="favorite-btn-container">
+                <h1>{recipe?.strMeal}</h1>
+                <div onClick={() => handleFavorite(recipe)}>
+                  {isFavorited(recipe) ? (
+                    <FavoriteButtons.FavoriteFilled />
+                  ) : (
+                    <FavoriteButtons.FavoriteNotFilled />
+                  )}
+                </div>
+              </div>
               <span>{recipe?.strCategory}</span>
 
               <h2>Igredients</h2>
@@ -169,20 +194,19 @@ function Recipe({ searchParams }) {
                   <li key={index}>
                     {measurements[index][1] ?? ""} {ingredient[1] ?? ""}
                   </li>
-
                 ))}
               </ul>
             </div>
           </div>
-          <div className='instructions-and-video-container'>
-            <div className='instructions-container'>
+          <div className="instructions-and-video-container">
+            <div className="instructions-container">
               <h2>Instructions</h2>
               <p>{recipe?.strInstructions}</p>
             </div>
-            <div className='video-container'>
+            <div className="video-container">
               <h2>Video</h2>
               <iframe
-                src={ recipe?.strYoutube.replace("watch?v=", "embed/") }
+                src={recipe?.strYoutube.replace("watch?v=", "embed/")}
                 title="instructions video"
                 allowFullScreen
               />
