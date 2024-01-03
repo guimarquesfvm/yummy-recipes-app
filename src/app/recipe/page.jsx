@@ -1,11 +1,10 @@
 "use client";
-import FavoriteButtons from "@/assets/icons/FavoriteButtons";
 import BackButton from "@/components/BackButton";
 import { DefaultPageLayout } from "@/components/DefaultPageLayout";
 import { useRecipe } from "@/hooks/useRecipe";
-import React, { useEffect, useState, useContext } from "react";
-import { MealsContext } from "@/context/MealsContext";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const Container = styled.div`
     display: flex;
@@ -154,7 +153,6 @@ const Container = styled.div`
 
 function Recipe({ searchParams }) {
   const recipe = useRecipe(searchParams.id);
-  const { isFavorited, handleFavorite } = useContext(MealsContext);
 
   const [ingredients, setIngredients] = useState([]);
   const [measurements, setMeasurements] = useState([]);
@@ -185,13 +183,7 @@ function Recipe({ searchParams }) {
             <div>
               <div className="favorite-btn-container">
                 <h1>{recipe?.strMeal}</h1>
-                <div onClick={() => handleFavorite(recipe)}>
-                  {isFavorited(recipe) ? (
-                    <FavoriteButtons.FavoriteFilled />
-                  ) : (
-                    <FavoriteButtons.FavoriteNotFilled />
-                  )}
-                </div>
+                <FavoriteButton recipe={recipe} />
               </div>
               <span>{recipe?.strCategory}</span>
 

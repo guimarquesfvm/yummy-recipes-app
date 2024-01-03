@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
-import { MealsContext } from '@/context/MealsContext';
+import React from 'react'
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
-import FavoriteButtons from '../assets/icons/FavoriteButtons';
+import FavoriteButton from './FavoriteButton';
 
 const Card = styled.div`
     align-items: center;
@@ -23,10 +22,10 @@ const Card = styled.div`
     text-align: left;
 
     img {
-        width: 300px;
-        height: 300px;
-        border-radius: 10px 10px 0px 0px;
-        cursor: pointer;
+      width: 300px;
+      height: 300px;
+      border-radius: 10px 10px 0px 0px;
+      cursor: pointer;
     }
 
     div {
@@ -53,7 +52,6 @@ const Card = styled.div`
 `
 
 function RecipeCard({ recipe }) {
-  const { handleFavorite, isFavorited } = useContext(MealsContext);
   const router = useRouter();
   const handleNavigate = () => {
     router.push(`/recipe?id=${recipe.idMeal}`);
@@ -64,9 +62,7 @@ function RecipeCard({ recipe }) {
         <img src={ recipe.strMealThumb } onClick={ handleNavigate } />
         <div>
           <h3>{ recipe.strMeal }</h3>
-          <div onClick={ () => handleFavorite(recipe) } className='favorite-btn-container'>
-            { isFavorited(recipe) ? <FavoriteButtons.FavoriteFilled /> : <FavoriteButtons.FavoriteNotFilled /> }
-          </div>
+          <FavoriteButton recipe={ recipe } />
         </div>
     </Card>
   )

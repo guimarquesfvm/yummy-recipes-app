@@ -26,15 +26,17 @@ const TagHeader = styled.header`
         justify-content: center;
         gap: 20px;
 
-        > svg {
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-
-            &:hover {
-                transform: scale(1.15);
-                transition: 0.5s;
-                z-index: 1;
+        > div {
+            > svg {
+                cursor: pointer;
+                width: 32px;
+                height: 32px;
+    
+                &:hover {
+                    transform: scale(1.15);
+                    transition: 0.5s;
+                    z-index: 1;
+                }
             }
         }
     }
@@ -85,18 +87,23 @@ function Header() {
     }
 
     const router = useRouter();
-    const handleNavigate = () => {
+    const handleNavigateHome = () => {
         router.push('/');
+    }
+    const handleNavigateFavorites = () => {
+        router.push('/favorites');
     }
   return (
     <TagHeader>
-        <Logo className={ caveat.className } onClick={ () => handleNavigate() }>
+        <Logo className={ caveat.className } onClick={ () => handleNavigateHome() }>
             <YummyLogo />
             yummy
         </Logo>
         <div>
             <SeachInputWithIcon handleChange={ handleChange } value={ searchTerm }/>
-            <FavoritesIcon />
+            <div onClick={ () => handleNavigateFavorites() } >
+                <FavoritesIcon />
+            </div>
         </div>
     </TagHeader>
   )
