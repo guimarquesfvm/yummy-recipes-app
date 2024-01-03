@@ -28,9 +28,8 @@ const FavoritedList = styled.ul`
       grid-template-columns: repeat(3, 1fr);
     }
 `
-function page() {
-    const { favoriteRecipes, handleFavorite } = useContext(MealsContext);
-    console.log(favoriteRecipes)
+function Page() {
+    const { favoriteRecipes } = useContext(MealsContext);
 
   return (
     <DefaultPageLayout>
@@ -52,4 +51,4 @@ function page() {
   );
 }
 
-export default page
+export default Page

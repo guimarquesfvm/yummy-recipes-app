@@ -11,7 +11,7 @@ export const MealsContext = createContext({
 export const MealsProvider = ({children}) => {
     const [filterType, setFilterType] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
-    const [favoriteRecipes, setFavoriteRecipes] = useState(JSON.parse(localStorage.getItem('favoriteRecipes')) || []);
+    const [favoriteRecipes, setFavoriteRecipes] = useState(typeof window ==! "undefined" && JSON.parse(localStorage.getItem('favoriteRecipes')) || []);
 
     // return true if recipe is already favorited
     const isFavorited = (recipe) => favoriteRecipes.some((r) => r.idMeal === recipe?.idMeal);
